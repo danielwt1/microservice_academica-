@@ -7,9 +7,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ProgramaAcademicoMapper {
-    @Mapping(source = "id", target = "nivelAcademico.id")
+    @Mapping(source = "nivelAcademico.id", target = "nivelAcademico.id")
     ProgramaAcademico programaEntityToPrograma(ProgramaAcademicoEntity programaAcademicoEntity);
 
-    @Mapping(source = "nivelAcademico.id", target = "idLevelEducation")
+    @Mapping(source = "nivelAcademico.id", target = "nivelAcademico.id")
     ProgramaAcademicoEntity programaToProgramaEntity(ProgramaAcademico programaAcademico);
 }

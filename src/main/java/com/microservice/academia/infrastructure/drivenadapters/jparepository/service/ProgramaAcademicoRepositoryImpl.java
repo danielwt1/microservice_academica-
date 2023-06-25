@@ -17,7 +17,7 @@ public class ProgramaAcademicoRepositoryImpl implements ProgramaAcademicoReposit
     @Override
     public ProgramaAcademico saveProgramaAcademico(ProgramaAcademico programaAcademico) {
         if (programaAcademico == null) {
-            throw new IllegalArgumentException("El objeto stock no puede ser nulo");
+            throw new IllegalArgumentException("El objeto programa academico no puede ser nulo");
         }
         ProgramaAcademicoEntity programaAcademicoEntity = programaAcademicoMapper.programaToProgramaEntity(programaAcademico);
         return programaAcademicoMapper.programaEntityToPrograma(programaAcademicoJpaRepository.save(programaAcademicoEntity));

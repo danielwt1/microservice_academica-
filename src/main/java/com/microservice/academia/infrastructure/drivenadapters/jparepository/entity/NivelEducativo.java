@@ -11,30 +11,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PROGRAMA_ACADEMICO")
+@Table(name = "NIVEL_EDUCATIVO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class ProgramaAcademicoEntity {
+public class NivelEducativo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre", unique = true)
+    @Column(name = "nombre")
     private String name;
 
     @Column(name = "descripcion")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "nivel_educativo_id", referencedColumnName = "id")
-    private NivelEducativo nivelAcademico;
 }
