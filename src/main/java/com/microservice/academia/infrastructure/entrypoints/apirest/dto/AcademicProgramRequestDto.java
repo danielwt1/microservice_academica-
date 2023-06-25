@@ -1,4 +1,4 @@
-package com.microservice.academia.infrastructure.entrypoints.apirest.rest.dto;
+package com.microservice.academia.infrastructure.entrypoints.apirest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Builder
 @Setter
 @AllArgsConstructor
-public class ProgramaAcademicoRequestDTO {
+public class AcademicProgramRequestDto {
     @NotEmpty
     @NotNull
     @Size(min = 8, max = 40, message = "El nombre del programa debe tener una longitud de 8 a 40 caracteres")
@@ -30,4 +30,3 @@ public class ProgramaAcademicoRequestDTO {
     @NotNull
     private Long idLevelEducation;
 }
-

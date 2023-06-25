@@ -11,9 +11,8 @@ import lombok.ToString;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class ProgramaAcademico {
+public class EducationLevel {
     private Long id;
     private String name;
     private String description;
-    private NivelAcademico nivelAcademico;
 }

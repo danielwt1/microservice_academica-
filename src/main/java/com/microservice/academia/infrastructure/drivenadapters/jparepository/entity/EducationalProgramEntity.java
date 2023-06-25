@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Builder
-public class ProgramaAcademicoEntity {
+public class EducationalProgramEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,5 +36,5 @@ public class ProgramaAcademicoEntity {
 
     @ManyToOne
     @JoinColumn(name = "nivel_educativo_id", referencedColumnName = "id")
-    private NivelEducativo nivelAcademico;
+    private EducationalLevelEntity educationLevel;
 }

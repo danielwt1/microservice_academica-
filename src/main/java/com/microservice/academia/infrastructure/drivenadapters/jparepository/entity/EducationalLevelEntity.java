@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Builder
-public class NivelEducativo {
+public class EducationalLevelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
