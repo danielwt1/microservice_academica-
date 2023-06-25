@@ -22,3 +22,5 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
+
+      #   http://localhost:8081/swagger-ui/index.html

@@ -1,7 +1,8 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.service;
 
 import com.microservice.academia.domain.model.model.AcademicProgram;
-import com.microservice.academia.domain.model.ports.spi.AcademicProgramPersistencePort;
+import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
+import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.EducationalProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.EducationalProgramEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @AllArgsConstructor
-public class AcademicProgramPersistencePortImpl implements AcademicProgramPersistencePort {
+public class CreateProgramPersistencePortImpl implements CreateProgramPersistencePort {
     private final EducationalProgramJpaRepository educationalProgramJpaRepository;
     private final EducationalProgramEntityMapper educationalProgramEntityMapper;
 

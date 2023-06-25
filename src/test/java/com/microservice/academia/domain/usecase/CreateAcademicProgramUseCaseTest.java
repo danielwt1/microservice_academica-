@@ -2,7 +2,7 @@ package com.microservice.academia.domain.usecase;
 
 import com.microservice.academia.domain.exeptions.AcademiaExceptions;
 import com.microservice.academia.domain.model.model.AcademicProgram;
-import com.microservice.academia.domain.model.ports.spi.AcademicProgramPersistencePort;
+import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
 import com.microservice.academia.mock.programaAcademico.AcademicProgramMockData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +21,7 @@ class CreateAcademicProgramUseCaseTest {
     private CreateAcademicProgramUseCase createAcademicProgramUseCase;
 
     @Mock
-    private AcademicProgramPersistencePort academicProgramPersistencePort;
+    private CreateProgramPersistencePort createProgramPersistencePort;
 
     @BeforeEach
     void setUp() {
@@ -34,7 +34,7 @@ class CreateAcademicProgramUseCaseTest {
         // Arrange
         Long programId = 1L;
         AcademicProgram academicProgram = AcademicProgramMockData.getProgram(programId);
-        when(academicProgramPersistencePort.createAcademicProgram(academicProgram)).thenReturn(academicProgram);
+        when(createProgramPersistencePort.createAcademicProgram(academicProgram)).thenReturn(academicProgram);
 
         // Act
         AcademicProgram result = createAcademicProgramUseCase.createAcademicProgram(academicProgram);
@@ -51,7 +51,7 @@ class CreateAcademicProgramUseCaseTest {
         AcademicProgram program = AcademicProgramMockData.getProgram(programId);
 
         // Act & Assert
-        doThrow(AcademiaExceptions.class).when(academicProgramPersistencePort).createAcademicProgram(program);
+        doThrow(AcademiaExceptions.class).when(createProgramPersistencePort).createAcademicProgram(program);
         assertThrows(AcademiaExceptions.class, () -> createAcademicProgramUseCase.createAcademicProgram(program));
     }
 }

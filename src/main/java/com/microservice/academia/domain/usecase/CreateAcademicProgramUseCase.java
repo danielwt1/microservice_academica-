@@ -1,16 +1,16 @@
 package com.microservice.academia.domain.usecase;
 
 import com.microservice.academia.domain.model.model.AcademicProgram;
-import com.microservice.academia.domain.model.ports.api.AcademicProgramServicePort;
-import com.microservice.academia.domain.model.ports.spi.AcademicProgramPersistencePort;
+import com.microservice.academia.domain.model.ports.api.CreateProgramServicePort;
+import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CreateAcademicProgramUseCase implements AcademicProgramServicePort {
-    private final AcademicProgramPersistencePort academicProgramPersistencePort;
+public class CreateAcademicProgramUseCase implements CreateProgramServicePort {
+    private final CreateProgramPersistencePort createProgramPersistencePort;
 
     @Override
     public AcademicProgram createAcademicProgram(AcademicProgram academicProgram) {
-        return academicProgramPersistencePort.createAcademicProgram(academicProgram);
+        return createProgramPersistencePort.createAcademicProgram(academicProgram);
     }
 }

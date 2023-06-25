@@ -1,7 +1,7 @@
-package com.microservice.academia.domain.model.ports.spi;
+package com.microservice.academia.domain.model.ports.api;
 
 import com.microservice.academia.domain.model.model.AcademicProgram;
 
-public interface AcademicProgramPersistencePort {
+public interface CreateProgramServicePort {
     AcademicProgram createAcademicProgram(AcademicProgram academicProgram);
 }
