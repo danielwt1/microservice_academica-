@@ -1,4 +1,4 @@
-package com.microservice.academia.domain.model.model;
+package com.microservice.academia.domain.model.model.AcademicProgram;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -11,9 +11,8 @@ import lombok.ToString;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class AcademicProgram {
+public class EducationLevel {
     private Long id;
     private String name;
     private String description;
-    private EducationLevel educationLevel;
 }

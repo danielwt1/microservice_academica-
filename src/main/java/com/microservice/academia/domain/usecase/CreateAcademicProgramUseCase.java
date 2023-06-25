@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase;
 
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.api.CreateProgramServicePort;
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,7 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.service;
 
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.EducationalProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.EducationalProgramEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;

@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper;
 
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.EducationalProgramEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

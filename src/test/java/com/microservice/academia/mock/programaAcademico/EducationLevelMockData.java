@@ -1,6 +1,6 @@
 package com.microservice.academia.mock.programaAcademico;
 
-import com.microservice.academia.domain.model.model.EducationLevel;
+import com.microservice.academia.domain.model.model.AcademicProgram.EducationLevel;
 
 public class EducationLevelMockData {
     public static EducationLevel getEducationLevel(Long id) {

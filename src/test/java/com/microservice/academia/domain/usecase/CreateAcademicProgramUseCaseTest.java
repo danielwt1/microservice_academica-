@@ -1,7 +1,7 @@
 package com.microservice.academia.domain.usecase;
 
 import com.microservice.academia.domain.exeptions.AcademiaExceptions;
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
 import com.microservice.academia.mock.programaAcademico.AcademicProgramMockData;
 import org.junit.jupiter.api.BeforeEach;

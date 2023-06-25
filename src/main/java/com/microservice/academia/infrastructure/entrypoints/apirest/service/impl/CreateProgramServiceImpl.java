@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.service.impl;
 
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.api.CreateProgramServicePort;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.mapper.AcademicProgramRequestMapper;
