@@ -12,9 +12,11 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class UserModel {
-    private Long idUser;
+    private Long id;
     private String name;
     private String lastName;
     private String email;
     private Long code;
+    private Long typeUserId;
+    private String typeUserName;
 }

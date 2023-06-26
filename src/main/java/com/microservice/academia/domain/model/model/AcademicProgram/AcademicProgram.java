@@ -16,4 +16,5 @@ public class AcademicProgram {
     private String name;
     private String description;
     private EducationLevel educationLevel;
+    private Long typeUserId;
 }

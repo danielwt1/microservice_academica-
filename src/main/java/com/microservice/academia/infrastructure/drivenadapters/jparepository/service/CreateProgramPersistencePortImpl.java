@@ -2,7 +2,7 @@ package com.microservice.academia.infrastructure.drivenadapters.jparepository.se
 
 import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.EducationalProgramEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.EducationalProgramEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class CreateProgramPersistencePortImpl implements CreateProgramPersistenc
         if (academicProgram == null) {
             throw new IllegalArgumentException("El objeto programa academico no puede ser nulo");
         }
-        EducationalProgramEntity educationalProgramEntity = educationalProgramEntityMapper.programaToProgramaEntity(academicProgram);
-        return educationalProgramEntityMapper.programaEntityToPrograma(educationalProgramJpaRepository.save(educationalProgramEntity));
+        AcademicProgramEntity academicProgramEntity = educationalProgramEntityMapper.programaToProgramaEntity(academicProgram);
+        return educationalProgramEntityMapper.programaEntityToPrograma(educationalProgramJpaRepository.save(academicProgramEntity));
     }
 }

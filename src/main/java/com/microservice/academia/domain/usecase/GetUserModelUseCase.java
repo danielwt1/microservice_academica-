@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class GetUserModelUseCase {
     private final UserAcademyService userAcademyService;
 
-    public UserModel action(Long idUser){
+    public UserModel action(Long idUser) {
         return userAcademyService.getUserById(idUser);
     }
 }

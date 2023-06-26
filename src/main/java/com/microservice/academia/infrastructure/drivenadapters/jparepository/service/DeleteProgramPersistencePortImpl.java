@@ -2,7 +2,7 @@ package com.microservice.academia.infrastructure.drivenadapters.jparepository.se
 
 import com.microservice.academia.domain.exeptions.AcademiaExceptions;
 import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.EducationalProgramEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ public class DeleteProgramPersistencePortImpl implements DeleteProgramPersistenc
 
     @Override
     public void DeleteAcademicProgram(Long idProgram) {
-        Optional<EducationalProgramEntity> optionalProgramEntity = this.educationalProgramJpaRepository.findById(idProgram);
-        if (optionalProgramEntity.isEmpty()){
+        Optional<AcademicProgramEntity> optionalProgramEntity = this.educationalProgramJpaRepository.findById(idProgram);
+        if (optionalProgramEntity.isEmpty()) {
             throw new AcademiaExceptions("Program not found", HttpStatus.NOT_FOUND);
         }
         this.educationalProgramJpaRepository.deleteById(idProgram);

@@ -29,4 +29,6 @@ public class AcademicProgramRequestDto {
     @NotEmpty
     @NotNull
     private Long idLevelEducation;
+
+    private Long typeUserId;
 }
