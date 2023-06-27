@@ -25,13 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/programas-academicos")
+@RequestMapping("/academia")
 public class AcademicProgramRestController {
     private final CreateProgramService createProgramService;
     private final DeleteProgramService deleteProgramService;
     private final AddAcademicDirectorService addAcademicDirectorService;
     private final CreatePensumService createPensumService;
-
 
     @Operation(summary = "Le permite a un usuario de tipo Decano la creación de un programa académico",
             responses = {
@@ -49,7 +48,6 @@ public class AcademicProgramRestController {
         this.createProgramService.createAcademicProgram(academicProgramRequestDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 
     @Operation(summary = "Le permite a un usuario de tipo Decano la eliminación de un programa académico",
             responses = {
@@ -85,7 +83,6 @@ public class AcademicProgramRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
     @Operation(summary = "Le permite a un usuario de tipo Decano la creación de un pensum",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Se creo con éxito un pensum"),
@@ -102,5 +99,4 @@ public class AcademicProgramRestController {
         this.createPensumService.createPensum(pensumRequestDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }

@@ -39,6 +39,4 @@ public class AcademicProgramConfig {
     public GetUserModelUseCase getUserModelUseCase(UserAcademyService userAcademyService) {
         return new GetUserModelUseCase(userAcademyService);
     }
-
-
 }

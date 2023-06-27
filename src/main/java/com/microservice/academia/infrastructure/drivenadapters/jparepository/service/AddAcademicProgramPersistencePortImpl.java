@@ -42,7 +42,6 @@ public class AddAcademicProgramPersistencePortImpl implements AddAcademicDirecto
 
     private void validateAssignment(Long idDirector) {
         Long userId = academicProgramJpaRepository.findIdDirectorOfProgram(idDirector);
-        System.out.println(":: ID_DIRECTOR = " + userId);
         if (userId != null) {
             throw new AcademiaExceptions("Un director no puede ser asignado a más de un programa", HttpStatus.BAD_REQUEST);
         }
