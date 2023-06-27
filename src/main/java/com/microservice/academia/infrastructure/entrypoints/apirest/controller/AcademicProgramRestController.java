@@ -2,7 +2,9 @@ package com.microservice.academia.infrastructure.entrypoints.apirest.controller;
 
 import com.microservice.academia.exceptionhandler.response.ErrorDetails;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.AddAcademicDirectorService;
+import com.microservice.academia.infrastructure.entrypoints.apirest.service.CreatePensumService;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.CreateProgramService;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.DeleteProgramService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,6 +30,8 @@ public class AcademicProgramRestController {
     private final CreateProgramService createProgramService;
     private final DeleteProgramService deleteProgramService;
     private final AddAcademicDirectorService addAcademicDirectorService;
+    private final CreatePensumService createPensumService;
+
 
     @Operation(summary = "Le permite a un usuario de tipo Decano la creación de un programa académico",
             responses = {
@@ -40,11 +44,12 @@ public class AcademicProgramRestController {
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
     )
-    @PostMapping
+    @PostMapping("/academic-Program")
     public ResponseEntity<Void> createProgramaAcademico(@RequestBody AcademicProgramRequestDto academicProgramRequestDto) {
         this.createProgramService.createAcademicProgram(academicProgramRequestDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 
     @Operation(summary = "Le permite a un usuario de tipo Decano la eliminación de un programa académico",
             responses = {
@@ -57,15 +62,45 @@ public class AcademicProgramRestController {
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
     )
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/academic-Program/delete/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id) {
         this.deleteProgramService.DeleteAcademicProgram(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/addDirector")
+    @Operation(summary = "Le permite a un usuario de tipo Decano la asignación de un director a un programa academico",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Se asigno un director con éxito"),
+                    @ApiResponse(responseCode = "500", description = "A business logic error occurred",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class))),
+                    @ApiResponse(responseCode = "401", description = "El usuario no está autenticado, o el token esta incorrecto",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class)))
+            }
+    )
+    @PatchMapping("/academic-Program/addDirector")
     public ResponseEntity<Void> addAcademicDirector(@RequestParam("programID") Long programID, @RequestParam("userId") Long userId) {
         this.addAcademicDirectorService.addAcademicDirector(programID, userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+    @Operation(summary = "Le permite a un usuario de tipo Decano la creación de un pensum",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Se creo con éxito un pensum"),
+                    @ApiResponse(responseCode = "500", description = "A business logic error occurred",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class))),
+                    @ApiResponse(responseCode = "401", description = "El usuario no está autenticado, o el token esta incorrecto",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class)))
+            }
+    )
+    @PostMapping("/pensum")
+    public ResponseEntity<Void> createPensum(@RequestBody PensumRequestDto pensumRequestDto) {
+        this.createPensumService.createPensum(pensumRequestDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 }

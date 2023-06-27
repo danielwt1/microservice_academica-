@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,6 +19,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
 class AddAcademicDirectorUseCaseTest {
     @Mock
     private AddAcademicDirectorPersistencePort addAcademicDirectorPersistencePort;
@@ -41,7 +43,9 @@ class AddAcademicDirectorUseCaseTest {
         // Arrange
         Long academicProgramId = 1L;
         Long userId = 2L;
-        UserModel userModel = UserModel.builder().idUser(userId).build();
+        UserModel userModel = UserModel.builder()
+                .id(userId)
+                .build();
 
         when(getUserModelUseCase.action(anyLong())).thenReturn(userModel);
 
@@ -60,7 +64,7 @@ class AddAcademicDirectorUseCaseTest {
         // Arrange
         Long academicProgramId = 1L;
         Long userId = 2L;
-        UserModel userModel = UserModel.builder().idUser(null).build();
+        UserModel userModel = UserModel.builder().id(null).build();
 
         when(getUserModelUseCase.action((userId))).thenReturn(userModel);
 

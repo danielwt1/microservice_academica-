@@ -3,7 +3,7 @@ package com.microservice.academia.infrastructure.drivenadapters.jparepository.se
 import com.microservice.academia.domain.exeptions.AcademiaExceptions;
 import com.microservice.academia.domain.model.model.User.UserModel;
 import com.microservice.academia.domain.model.ports.spi.AddAcademicDirectorPersistencePort;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram.AcademicProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AcademicProgramJpaRepository;
 import com.microservice.academia.infrastructure.drivenadapters.userservice.services.UserModelServicesImpl;
 import lombok.AllArgsConstructor;

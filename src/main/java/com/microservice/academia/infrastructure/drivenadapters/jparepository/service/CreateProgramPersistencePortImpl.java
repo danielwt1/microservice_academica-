@@ -2,7 +2,7 @@ package com.microservice.academia.infrastructure.drivenadapters.jparepository.se
 
 import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProgram;
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram.AcademicProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.EducationalProgramEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AcademicProgramJpaRepository;
 import lombok.AllArgsConstructor;

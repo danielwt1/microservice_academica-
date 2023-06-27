@@ -9,13 +9,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
 class CreateAcademicProgramUseCaseTest {
     @InjectMocks
     private CreateAcademicProgramUseCase createAcademicProgramUseCase;
@@ -25,12 +26,12 @@ class CreateAcademicProgramUseCaseTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        createAcademicProgramUseCase = new CreateAcademicProgramUseCase(createProgramPersistencePort);
     }
 
     @Test
     @DisplayName("Given a valid programa academico, when saving the programa, then it should be saved successfully")
-    void testSaveProgramaAcademico_Success() {
+    void testCreateProgramaAcademicoSuccess() {
         // Arrange
         Long programId = 1L;
         AcademicProgram academicProgram = AcademicProgramMockData.getProgram(programId);
@@ -45,7 +46,7 @@ class CreateAcademicProgramUseCaseTest {
 
     @Test
     @DisplayName("Given an invalid programa academico, when saving the programa, then it should throw an exception")
-    void testSaveProgramaAcademico_TechnicalError() {
+    void testCreateProgramaAcademicoTechnicalError() {
         // Arrange
         Long programId = 1L;
         AcademicProgram program = AcademicProgramMockData.getProgram(programId);

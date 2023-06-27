@@ -1,4 +1,4 @@
-package com.microservice.academia.infrastructure.drivenadapters.jparepository.entity;
+package com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,24 +11,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "NIVEL_EDUCATIVO")
+@Table(name = "PROGRAMA_ACADEMICO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class EducationalLevelEntity {
+public class AcademicProgramEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", unique = true)
     private String name;
 
     @Column(name = "descripcion")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "nivel_educativo_id", referencedColumnName = "id")
+    private EducationalLevelEntity educationLevel;
+
+    @Column(name = "id_director")
+    private Long typeUserId;
 }

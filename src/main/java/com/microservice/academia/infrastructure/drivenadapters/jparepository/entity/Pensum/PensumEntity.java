@@ -1,5 +1,6 @@
-package com.microservice.academia.infrastructure.drivenadapters.jparepository.entity;
+package com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum;
 
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram.AcademicProgramEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,28 +17,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PROGRAMA_ACADEMICO")
+@Table(name = "PENSUM")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class AcademicProgramEntity {
+public class PensumEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre", unique = true)
-    private String name;
-
-    @Column(name = "descripcion")
-    private String description;
+    @Column(name = "año")
+    private int year;
 
     @ManyToOne
-    @JoinColumn(name = "nivel_educativo_id", referencedColumnName = "id")
-    private EducationalLevelEntity educationLevel;
-
-    @Column(name = "id_director")
-    private Long typeUserId;
+    @JoinColumn(name = "id_programa_academico", referencedColumnName = "id")
+    private AcademicProgramEntity programId;
 }

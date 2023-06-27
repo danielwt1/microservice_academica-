@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.repository;
 
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram.AcademicProgramEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

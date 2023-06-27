@@ -10,7 +10,6 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface AcademicProgramRequestMapper {
-
     @Mapping(source = "idLevelEducation", target = "educationLevel.id")
     @Mapping(target = "id", ignore = true)
     AcademicProgram toAcademicProgram(AcademicProgramRequestDto requestDto);
