@@ -3,24 +3,28 @@ package com.microservice.academia.infrastructure.drivenadapters.jparepository.se
 import com.microservice.academia.domain.exeptions.AcademiaExceptions;
 import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AcademicProgramJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 @AllArgsConstructor
 public class DeleteProgramPersistencePortImpl implements DeleteProgramPersistencePort {
-    private final EducationalProgramJpaRepository educationalProgramJpaRepository;
+    private final AcademicProgramJpaRepository academicProgramJpaRepository;
 
     @Override
-    public void DeleteAcademicProgram(Long idProgram) {
-        Optional<AcademicProgramEntity> optionalProgramEntity = this.educationalProgramJpaRepository.findById(idProgram);
-        if (optionalProgramEntity.isEmpty()) {
-            throw new AcademiaExceptions("Program not found", HttpStatus.NOT_FOUND);
+    public void deleteAcademicProgram(Long idProgram) {
+        AcademicProgramEntity programEntity = validateProgramDeletion(idProgram);
+        academicProgramJpaRepository.delete(programEntity);
+    }
+
+    private AcademicProgramEntity  validateProgramDeletion(Long idProgram) {
+        AcademicProgramEntity programEntity = academicProgramJpaRepository.findById(idProgram)
+                .orElseThrow(() -> new AcademiaExceptions("Program not found with ID: " + idProgram, HttpStatus.NOT_FOUND));
+        if (programEntity.getTypeUserId() != null) {
+            throw new AcademiaExceptions("Cannot delete an academic program with an assigned director", HttpStatus.BAD_REQUEST);
         }
-        this.educationalProgramJpaRepository.deleteById(idProgram);
+        return programEntity;
     }
 }

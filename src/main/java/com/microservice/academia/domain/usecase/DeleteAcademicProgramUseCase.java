@@ -10,7 +10,7 @@ public class DeleteAcademicProgramUseCase implements DeleteProgramServicePort {
 
     @Override
     public void DeleteAcademicProgram(Long idProgram) {
-        deleteProgramPersistencePort.DeleteAcademicProgram(idProgram);
+        deleteProgramPersistencePort.deleteAcademicProgram(idProgram);
     }
 }
 

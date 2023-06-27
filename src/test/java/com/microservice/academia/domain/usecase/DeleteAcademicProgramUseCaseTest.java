@@ -34,6 +34,6 @@ class DeleteAcademicProgramUseCaseTest {
         deleteAcademicProgramUseCase.DeleteAcademicProgram(idProgram);
 
         // Assert
-        verify(deleteProgramPersistencePort).DeleteAcademicProgram(idProgram);
+        verify(deleteProgramPersistencePort).deleteAcademicProgram(idProgram);
     }
 }

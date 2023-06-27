@@ -4,14 +4,14 @@ import com.microservice.academia.domain.model.model.AcademicProgram.AcademicProg
 import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.EducationalProgramEntityMapper;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.EducationalProgramJpaRepository;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AcademicProgramJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @AllArgsConstructor
 public class CreateProgramPersistencePortImpl implements CreateProgramPersistencePort {
-    private final EducationalProgramJpaRepository educationalProgramJpaRepository;
+    private final AcademicProgramJpaRepository academicProgramJpaRepository;
     private final EducationalProgramEntityMapper educationalProgramEntityMapper;
 
     @Override
@@ -20,6 +20,6 @@ public class CreateProgramPersistencePortImpl implements CreateProgramPersistenc
             throw new IllegalArgumentException("El objeto programa academico no puede ser nulo");
         }
         AcademicProgramEntity academicProgramEntity = educationalProgramEntityMapper.programaToProgramaEntity(academicProgram);
-        return educationalProgramEntityMapper.programaEntityToPrograma(educationalProgramJpaRepository.save(academicProgramEntity));
+        return educationalProgramEntityMapper.programaEntityToPrograma(academicProgramJpaRepository.save(academicProgramEntity));
     }
 }
