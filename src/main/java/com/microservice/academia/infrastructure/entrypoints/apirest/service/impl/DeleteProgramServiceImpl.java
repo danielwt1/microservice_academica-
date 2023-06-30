@@ -11,7 +11,7 @@ public class DeleteProgramServiceImpl implements DeleteProgramService {
     private final DeleteProgramServicePort deleteProgramServicePort;
 
     @Override
-    public void DeleteAcademicProgram(Long idProgram) {
+    public void deleteAcademicProgram(Long idProgram) {
         deleteProgramServicePort.DeleteAcademicProgram(idProgram);
     }
 }

@@ -28,7 +28,7 @@ public class DeleteProgramPersistencePortImpl implements DeleteProgramPersistenc
         AcademicProgramEntity programEntity = academicProgramJpaRepository.findById(idProgram)
                 .orElseThrow(() -> new AcademiaExceptions("Program not found with ID: " + idProgram, HttpStatus.NOT_FOUND));
         if (programEntity.getTypeUserId() != null) {
-            throw new AcademiaExceptions("Cannot delete an academic program with an assigned director", HttpStatus.BAD_REQUEST);
+            throw new AcademiaExceptions("No Es posible eliminar un programa con un director asignado", HttpStatus.BAD_REQUEST);
         }
         List<PensumEntity> validateAssignmentPensum = pensumJpaRepository.findByProgramAcademicId(idProgram);
         if (!validateAssignmentPensum.isEmpty()) {

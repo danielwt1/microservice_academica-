@@ -1,17 +1,19 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper;
 
+import com.microservice.academia.domain.model.model.pensun.Assignment;
 import com.microservice.academia.domain.model.model.pensun.Pensum;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum.PensumEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum.AssignmentEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface PensumEntityMapper {
-    @Mapping(source = "programId.id", target = "programId.id")
-    Pensum pensumEntityToPensum(PensumEntity pensumEntity);
+public interface AssignmentEntityMapper {
 
-    @Mapping(source = "programId.id", target = "programId.id")
-    PensumEntity pensumToPensumEntity(Pensum pensum);
+    @Mapping(source = "pensumId.id", target = "pensumId")
+    AssignmentEntity assignmentToEntity(Assignment assignment);
+
+    @Mapping(source = "pensumId", target = "pensumId.id")
+    Assignment entityToAssignment(AssignmentEntity entity);
 
     default Pensum map(Long value) {
         if (value == null) {
@@ -26,4 +28,5 @@ public interface PensumEntityMapper {
         }
         return value.getId();
     }
+
 }

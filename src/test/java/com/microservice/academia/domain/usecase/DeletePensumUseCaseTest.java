@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase;
 
-import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
+import com.microservice.academia.domain.model.ports.spi.DeletePensumPersistencePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,29 +11,29 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.mockito.Mockito.verify;
 
 @SpringBootTest
-class DeleteAcademicProgramUseCaseTest {
+class DeletePensumUseCaseTest {
     @Mock
-    private DeleteProgramPersistencePort deleteProgramPersistencePort;
+    private DeletePensumPersistencePort deletePensumPersistencePort;
 
     @InjectMocks
-    private DeleteAcademicProgramUseCase deleteAcademicProgramUseCase;
+    private DeletePensumUseCase deletePensumUseCase;
 
     @BeforeEach
-    public void setUp() {
-        deleteAcademicProgramUseCase = new DeleteAcademicProgramUseCase(deleteProgramPersistencePort);
+    void setUp() {
+        deletePensumUseCase = new DeletePensumUseCase(deletePensumPersistencePort);
     }
 
     @Test
     @DisplayName("Given an academic program ID, when deleting the academic program, " +
             "then it should invoke the delete persistence port")
-    void testDeleteAcademicProgram() {
+    void testDeletePensumSusses() {
         // Arrange
-        Long idProgram = 1L;
+        Long idPensum = 1L;
 
         // Act
-        deleteAcademicProgramUseCase.DeleteAcademicProgram(idProgram);
+        deletePensumUseCase.deletePensum(idPensum);
 
         // Assert
-        verify(deleteProgramPersistencePort).deleteAcademicProgram(idProgram);
+        verify(deletePensumPersistencePort).deletePensum(idPensum);
     }
 }

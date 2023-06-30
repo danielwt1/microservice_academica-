@@ -13,4 +13,6 @@ public interface PensumRequestMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(source = "programId", target = "programId.id")
     Pensum pensumDtoToPensum(PensumRequestDto requestDto);
+
+
 }

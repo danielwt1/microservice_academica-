@@ -1,45 +1,43 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum;
 
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgram.AcademicProgramEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
-@Table(name = "PENSUM")
+@Table(name = "MATERIA")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class PensumEntity {
+public class AssignmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "año")
-    private int year;
+    @Column(name = "nombre")
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "id_programa_academico", referencedColumnName = "id")
-    private AcademicProgramEntity programId;
+    @Column(name = "descripcion")
+    private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_pensum")
-    private List<AssignmentEntity> assignments;
+    @Column(name = "id_pensum")
+    private Long pensumId;
+
+    @OneToOne
+    @JoinColumn(name = "id_materia_prerrequisito", referencedColumnName = "id")
+    private AssignmentEntity preAssignmentId;
 }
