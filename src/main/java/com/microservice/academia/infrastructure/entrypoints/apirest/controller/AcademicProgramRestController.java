@@ -3,6 +3,7 @@ package com.microservice.academia.infrastructure.entrypoints.apirest.controller;
 import com.microservice.academia.exceptionhandler.response.ErrorDetails;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AssignmentRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AssignmentResponseDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.AddAcademicDirectorService;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.AddAssignmentService;
@@ -10,6 +11,7 @@ import com.microservice.academia.infrastructure.entrypoints.apirest.service.Crea
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.CreateProgramService;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.DeletePensumService;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.DeleteProgramService;
+import com.microservice.academia.infrastructure.entrypoints.apirest.service.GetAssignmentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +39,7 @@ public class AcademicProgramRestController {
     private final CreatePensumService createPensumService;
     private final DeletePensumService deletePensumService;
     private final AddAssignmentService addAssignmentService;
+    private final GetAssignmentService getAssignmentService;
 
     @Operation(summary = "Le permite a un usuario de tipo Decano la creación de un programa académico",
             responses = {
@@ -137,5 +141,12 @@ public class AcademicProgramRestController {
     public ResponseEntity<Void> addAssignment(@RequestBody AssignmentRequestDto assignmentRequestDto) {
         this.addAssignmentService.addAssignment(assignmentRequestDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @GetMapping("/pensum/assignments")
+    public ResponseEntity<AssignmentResponseDto> getAssignmentById(@RequestParam("assignmentId") Long assignmentId) {
+        AssignmentResponseDto response = this.getAssignmentService.getAssignmentServicePort(assignmentId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
