@@ -1,6 +1,6 @@
 package com.microservice.academia.mock.programaAcademico;
 
-import com.microservice.academia.domain.model.model.AcademicProgram;
+import com.microservice.academia.domain.model.model.academy.AcademicProgram;
 
 public class AcademicProgramMockData {
     public static AcademicProgram getProgram(Long id) {
