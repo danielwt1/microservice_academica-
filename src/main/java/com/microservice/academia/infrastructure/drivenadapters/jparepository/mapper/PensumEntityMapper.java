@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper;
 
-import com.microservice.academia.domain.model.model.pensun.Pensum;
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum.PensumEntity;
+import com.microservice.academia.domain.model.model.academy.Pensum;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.PensumEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

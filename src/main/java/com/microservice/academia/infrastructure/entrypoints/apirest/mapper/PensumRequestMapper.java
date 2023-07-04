@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.mapper;
 
-import com.microservice.academia.domain.model.model.pensun.Pensum;
+import com.microservice.academia.domain.model.model.academy.Pensum;
 import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

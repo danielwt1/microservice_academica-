@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.drivenadapters.userservice.feignClient;
 
-import com.microservice.academia.domain.model.model.User.UserModel;
+import com.microservice.academia.domain.model.model.userservice.UserModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

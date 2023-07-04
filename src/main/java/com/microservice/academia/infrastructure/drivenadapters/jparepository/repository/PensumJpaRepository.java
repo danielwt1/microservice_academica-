@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.repository;
 
-import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.Pensum.PensumEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.PensumEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

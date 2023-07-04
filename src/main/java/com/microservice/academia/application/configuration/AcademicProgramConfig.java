@@ -1,54 +1,46 @@
 package com.microservice.academia.application.configuration;
 
-import com.microservice.academia.domain.model.ports.api.services.UserAcademyService;
-import com.microservice.academia.domain.model.ports.spi.AddAcademicDirectorPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.AddAssignmentPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.CreatePensumPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.CreateProgramPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.DeletePensumPersistencePort;
-import com.microservice.academia.domain.model.ports.spi.DeleteProgramPersistencePort;
-import com.microservice.academia.domain.usecase.AddAssignmentUseCase;
-import com.microservice.academia.domain.usecase.CreateAcademicProgramUseCase;
-import com.microservice.academia.domain.usecase.CreatePensumUseCase;
-import com.microservice.academia.domain.usecase.DeleteAcademicProgramUseCase;
-import com.microservice.academia.domain.usecase.DeletePensumUseCase;
-import com.microservice.academia.domain.usecase.GetUserModelUseCase;
-import com.microservice.academia.domain.usecase.orchestrator.AddAcademicDirectorUseCase;
+import com.microservice.academia.domain.model.ports.api.userapi.UserAcademyService;
+import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
+import com.microservice.academia.domain.model.ports.repositories.AssignmentPersistencePort;
+import com.microservice.academia.domain.model.ports.repositories.PensumPersistencePort;
+import com.microservice.academia.domain.usecase.userapi.GetUserModelUseCase;
+import com.microservice.academia.domain.usecase.academy.AddAssignment;
+import com.microservice.academia.domain.usecase.academy.CreateAcademicProgram;
+import com.microservice.academia.domain.usecase.academy.CreatePensum;
+import com.microservice.academia.domain.usecase.academy.DeleteAcademicProgram;
+import com.microservice.academia.domain.usecase.academy.DeletePensum;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AcademicProgramConfig {
     @Bean
-    public CreateAcademicProgramUseCase createAcademicProgramUseCase(CreateProgramPersistencePort createProgramPersistencePort) {
-        return new CreateAcademicProgramUseCase(createProgramPersistencePort);
+    public CreateAcademicProgram createAcademicProgram(AcademyPersistencePort academyPersistencePort) {
+        return new CreateAcademicProgram(academyPersistencePort);
     }
 
     @Bean
-    public CreatePensumUseCase createPensumUseCase(CreatePensumPersistencePort createPensumPersistencePort) {
-        return new CreatePensumUseCase(createPensumPersistencePort);
+    public DeleteAcademicProgram deleteAcademicProgram(AcademyPersistencePort academyPersistencePort) {
+        return new DeleteAcademicProgram(academyPersistencePort);
     }
 
     @Bean
-    public DeleteAcademicProgramUseCase deleteAcademicProgramUseCase(DeleteProgramPersistencePort deleteProgramPersistencePort) {
-        return new DeleteAcademicProgramUseCase(deleteProgramPersistencePort);
+    public CreatePensum createPensum(PensumPersistencePort pensumPersistencePort) {
+        return new CreatePensum(pensumPersistencePort);
     }
 
     @Bean
-    public DeletePensumUseCase deletePensumUseCase(DeletePensumPersistencePort deletePensumPersistencePort) {
-        return new DeletePensumUseCase(deletePensumPersistencePort);
+    public DeletePensum deletePensum(PensumPersistencePort pensumPersistencePort) {
+        return new DeletePensum(pensumPersistencePort);
     }
 
     @Bean
-    public AddAcademicDirectorUseCase addAcademicDirectorUseCase(AddAcademicDirectorPersistencePort addAcademicDirectorPersistencePort,
-                                                                 GetUserModelUseCase getUserModelUseCase) {
-        return new AddAcademicDirectorUseCase(addAcademicDirectorPersistencePort, getUserModelUseCase);
+    public AddAssignment addAssignment(AssignmentPersistencePort assignmentPersistencePort) {
+        return new AddAssignment(assignmentPersistencePort);
     }
 
-    @Bean
-    public AddAssignmentUseCase addAssignmentUseCase(AddAssignmentPersistencePort addAssignmentPersistencePort) {
-        return new AddAssignmentUseCase(addAssignmentPersistencePort);
-    }
+    // ------
 
     @Bean
     public GetUserModelUseCase getUserModelUseCase(UserAcademyService userAcademyService) {

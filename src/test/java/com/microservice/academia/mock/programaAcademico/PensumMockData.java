@@ -1,6 +1,6 @@
 package com.microservice.academia.mock.programaAcademico;
 
-import com.microservice.academia.domain.model.model.pensun.Pensum;
+import com.microservice.academia.domain.model.model.academy.Pensum;
 
 public class PensumMockData {
     public static Pensum getPensum(Long id) {
