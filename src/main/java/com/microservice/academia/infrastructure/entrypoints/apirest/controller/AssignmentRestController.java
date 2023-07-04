@@ -1,8 +1,8 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.controller;
 
 import com.microservice.academia.exceptionhandler.response.ErrorDetails;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AssignmentRequestDto;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AssignmentResponseDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AssignmentRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.response.AssignmentResponseDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.impl.AssignmentServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/academia")
+@RequestMapping("/academia_dev")
 public class AssignmentRestController {
     private final AssignmentServiceImpl assignmentService;
 
@@ -35,12 +35,23 @@ public class AssignmentRestController {
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
     )
-    @PostMapping("/pensum/addAssignment")
+    @PostMapping("/pensum/addAssignments")
     public ResponseEntity<Void> addAssignment(@RequestBody AssignmentRequestDto assignmentRequestDto) {
         this.assignmentService.addAssignmentServicePort(assignmentRequestDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Operation(summary = "Le permite consultar el detalle de una materia por su id",
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "se agrega materia con exito"),
+                    @ApiResponse(responseCode = "500", description = "A business logic error occurred",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class))),
+                    @ApiResponse(responseCode = "401", description = "El usuario no está autenticado, o el token esta incorrecto",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(type = "object", implementation = ErrorDetails.class)))
+            }
+    )
     @GetMapping("/pensum/assignments")
     public ResponseEntity<AssignmentResponseDto> getAssignmentById(@RequestParam("assignmentId") Long assignmentId) {
         AssignmentResponseDto response = this.assignmentService.getAssignmentServicePort(assignmentId);

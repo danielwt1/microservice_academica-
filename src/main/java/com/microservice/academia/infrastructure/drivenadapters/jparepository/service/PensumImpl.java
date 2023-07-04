@@ -1,10 +1,10 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.service;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
 import com.microservice.academia.domain.model.model.academy.Pensum;
 import com.microservice.academia.domain.model.ports.repositories.PensumPersistencePort;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AssignmentEntity;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.PensumEntity;
+import com.microservice.academia.infrastructure.drivenadapters.jparepository.exeptions.PensumNotFoundException;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.PensumEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AssignmentJpaRepository;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.PensumJpaRepository;
@@ -24,7 +24,7 @@ public class PensumImpl implements PensumPersistencePort {
     @Override
     public Pensum createPensum(Pensum pensum) {
         if (Boolean.TRUE.equals(validateAssignment(pensum))) {
-            throw new AcademiaExceptions("No es posible asignar un Pensum a un programa para un mismo año", HttpStatus.BAD_REQUEST);
+            throw new PensumNotFoundException("No es posible asignar un Pensum a un programa para un mismo año", HttpStatus.BAD_REQUEST);
         }
         PensumEntity pensumEntity = pensumEntityMapper.pensumToPensumEntity(pensum);
         return pensumEntityMapper.pensumEntityToPensum(pensumJpaRepository.save(pensumEntity));
@@ -34,7 +34,7 @@ public class PensumImpl implements PensumPersistencePort {
     public void deletePensum(Long pensumId) {
         List<AssignmentEntity> assignmentEntity = assignmentJpaRepository.findByIdPensum(pensumId);
         if (!assignmentEntity.isEmpty()) {
-            throw new AcademiaExceptions("No es posible eliminar un pensum con materias asociadas", HttpStatus.BAD_REQUEST);
+            throw new PensumNotFoundException("No es posible eliminar un pensum con materias asociadas", HttpStatus.BAD_REQUEST);
         }
         pensumJpaRepository.deleteById(pensumId);
     }

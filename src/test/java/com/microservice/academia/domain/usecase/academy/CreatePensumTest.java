@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase.academy;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
+import com.microservice.academia.domain.exeptions.UserNotFoundException;
 import com.microservice.academia.domain.model.model.academy.Pensum;
 import com.microservice.academia.domain.model.ports.repositories.PensumPersistencePort;
 import com.microservice.academia.mock.programaAcademico.PensumMockData;
@@ -53,7 +53,7 @@ class CreatePensumTest {
         Pensum pensum = PensumMockData.getPensum(pensumId);
 
         //Act & Assert
-        doThrow(AcademiaExceptions.class).when(pensumPersistencePort).createPensum(pensum);
-        assertThrows(AcademiaExceptions.class, () -> createPensum.action(pensum));
+        doThrow(UserNotFoundException.class).when(pensumPersistencePort).createPensum(pensum);
+        assertThrows(UserNotFoundException.class, () -> createPensum.action(pensum));
     }
 }

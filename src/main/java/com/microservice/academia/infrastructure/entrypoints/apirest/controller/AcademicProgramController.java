@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.controller;
 
 import com.microservice.academia.exceptionhandler.response.ErrorDetails;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AcademicProgramRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.impl.AcademyProgramServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.controller;
 
 import com.microservice.academia.exceptionhandler.response.ErrorDetails;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.PensumRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.impl.PensumServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

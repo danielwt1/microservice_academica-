@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.service;
 
 import com.microservice.academia.domain.model.model.academy.Pensum;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.PensumRequestDto;
 
 public interface PensumService {
     Pensum createPensum(PensumRequestDto pensumDto);

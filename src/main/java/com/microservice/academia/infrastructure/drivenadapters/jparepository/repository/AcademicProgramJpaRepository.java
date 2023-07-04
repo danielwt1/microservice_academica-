@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface AcademicProgramJpaRepository extends JpaRepository<AcademicProgramEntity, Long> {
     @Query(value = "select id_director from programa_academico where id_director=:id", nativeQuery = true)
     Long findIdDirectorOfProgram(@Param("id") Long id);
+
+    @Query("SELECT CASE WHEN COUNT(ap) > 0 THEN true ELSE false END FROM AcademicProgramEntity ap WHERE ap.name = :name")
+    boolean existsByName(String name);
 }

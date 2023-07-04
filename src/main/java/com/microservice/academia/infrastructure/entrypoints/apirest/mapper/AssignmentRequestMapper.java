@@ -2,7 +2,7 @@ package com.microservice.academia.infrastructure.entrypoints.apirest.mapper;
 
 import com.microservice.academia.domain.model.model.academy.Assignment;
 import com.microservice.academia.domain.model.model.academy.Pensum;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AssignmentRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AssignmentRequestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

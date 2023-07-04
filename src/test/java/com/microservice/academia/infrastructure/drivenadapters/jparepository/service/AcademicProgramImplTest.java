@@ -1,6 +1,6 @@
 package com.microservice.academia.infrastructure.drivenadapters.jparepository.service;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
+import com.microservice.academia.domain.exeptions.UserNotFoundException;
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
 import com.microservice.academia.domain.model.model.userservice.UserModel;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.entity.AcademicProgramEntity;
@@ -10,8 +10,6 @@ import com.microservice.academia.infrastructure.drivenadapters.jparepository.rep
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.PensumJpaRepository;
 import com.microservice.academia.infrastructure.drivenadapters.userservice.services.UserModelServicesImpl;
 import com.microservice.academia.mock.programaAcademico.AcademicProgramMockData;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -117,7 +115,7 @@ class AcademicProgramImplTest {
         academicProgram.getEducationLevel().setId(null);
 
         // Act and Assert
-        AcademiaExceptions exception = assertThrows(AcademiaExceptions.class, () -> academicProgramImpl.createAcademicProgram(academicProgram));
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> academicProgramImpl.createAcademicProgram(academicProgram));
         assertEquals("debe existir un nivel educativo", exception.getMessage());
         assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
         verify(academicProgramJpaRepository, never()).save(any(AcademicProgramEntity.class));
@@ -130,7 +128,7 @@ class AcademicProgramImplTest {
         when(academicProgramJpaRepository.findById(idProgram)).thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThrows(AcademiaExceptions.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
+        assertThrows(UserNotFoundException.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
         verify(academicProgramJpaRepository, never()).delete(any());
     }
 
@@ -156,7 +154,7 @@ class AcademicProgramImplTest {
         when(pensumJpaRepository.findByProgramAcademicId(idProgram)).thenReturn(Collections.singletonList(new PensumEntity()));
 
         // Act & Assert
-        assertThrows(AcademiaExceptions.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
+        assertThrows(UserNotFoundException.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
         verify(academicProgramJpaRepository, never()).delete(any());
     }
 
@@ -169,7 +167,7 @@ class AcademicProgramImplTest {
         when(academicProgramJpaRepository.findById(idProgram)).thenReturn(Optional.of(programEntity));
 
         // Act & Assert
-        assertThrows(AcademiaExceptions.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
+        assertThrows(UserNotFoundException.class, () -> academicProgramImpl.deleteAcademicProgram(idProgram));
         verify(academicProgramJpaRepository, never()).delete(any());
     }
 }

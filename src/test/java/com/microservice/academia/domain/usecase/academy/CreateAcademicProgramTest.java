@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase.academy;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
+import com.microservice.academia.domain.exeptions.UserNotFoundException;
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
 import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
 import com.microservice.academia.mock.programaAcademico.AcademicProgramMockData;
@@ -53,7 +53,7 @@ class CreateAcademicProgramTest {
         createAcademicProgram.action(academicProgram);
 
         // Act & Assert
-        doThrow(AcademiaExceptions.class).when(academyPersistencePort).createAcademicProgram(academicProgram);
-        assertThrows(AcademiaExceptions.class, () -> createAcademicProgram.action(academicProgram));
+        doThrow(UserNotFoundException.class).when(academyPersistencePort).createAcademicProgram(academicProgram);
+        assertThrows(UserNotFoundException.class, () -> createAcademicProgram.action(academicProgram));
     }
 }

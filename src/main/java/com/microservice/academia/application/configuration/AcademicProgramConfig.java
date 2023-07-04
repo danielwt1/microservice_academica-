@@ -4,12 +4,12 @@ import com.microservice.academia.domain.model.ports.api.userapi.UserAcademyServi
 import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
 import com.microservice.academia.domain.model.ports.repositories.AssignmentPersistencePort;
 import com.microservice.academia.domain.model.ports.repositories.PensumPersistencePort;
-import com.microservice.academia.domain.usecase.userapi.GetUserModelUseCase;
 import com.microservice.academia.domain.usecase.academy.AddAssignment;
 import com.microservice.academia.domain.usecase.academy.CreateAcademicProgram;
 import com.microservice.academia.domain.usecase.academy.CreatePensum;
 import com.microservice.academia.domain.usecase.academy.DeleteAcademicProgram;
 import com.microservice.academia.domain.usecase.academy.DeletePensum;
+import com.microservice.academia.domain.usecase.userapi.GetUserModelUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

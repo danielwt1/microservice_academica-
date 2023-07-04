@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.mapper;
 
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AcademicProgramRequestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

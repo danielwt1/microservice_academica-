@@ -2,11 +2,13 @@ package com.microservice.academia.infrastructure.entrypoints.apirest.service.imp
 
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
 import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AcademicProgramRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.mapper.AcademicProgramRequestMapper;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.AcademyProgramService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class AcademyProgramServiceImpl implements AcademyProgramService {
     }
 
     @Override
-    public AcademicProgram createAcademicProgram(AcademicProgramRequestDto academicProgramRequest) {
+    public AcademicProgram createAcademicProgram(@Valid AcademicProgramRequestDto academicProgramRequest) {
         return academyPersistencePort.createAcademicProgram(requestMapper.toAcademicProgram(academicProgramRequest));
     }
 

@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase.academy;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
+import com.microservice.academia.domain.exeptions.UserNotFoundException;
 import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
 import com.microservice.academia.domain.usecase.userapi.GetUserModelUseCase;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ public class AddAcademicDirector {
     public void action(Long academicProgramId, Long userId) {
         Long userModelId = getUserModelUseCase.action(userId).getId();
         if (userModelId == null) {
-            throw new AcademiaExceptions("Usuario no registrado", HttpStatus.NOT_FOUND);
+            throw new UserNotFoundException("Usuario no registrado", HttpStatus.NOT_FOUND);
         }
         academyPersistencePort.assignAcademicDirector(academicProgramId, userModelId);
     }

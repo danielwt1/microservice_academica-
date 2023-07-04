@@ -6,15 +6,12 @@ import com.microservice.academia.infrastructure.drivenadapters.jparepository.ent
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.mapper.PensumEntityMapper;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.AssignmentJpaRepository;
 import com.microservice.academia.infrastructure.drivenadapters.jparepository.repository.PensumJpaRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,7 +38,7 @@ class PensumImplTest {
 
     @Test
     @Disabled
-     void testCreatePensum() {
+    void testCreatePensum() {
         // Arrange
         Pensum.PensumBuilder pensumBuilder = Pensum.builder()
                 .year(2023)

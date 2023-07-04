@@ -1,7 +1,7 @@
 package com.microservice.academia.infrastructure.entrypoints.apirest.service;
 
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.AcademicProgramRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.AcademicProgramRequestDto;
 
 public interface AcademyProgramService {
     void assignAcademicDirector(Long academicProgramId, Long userId);

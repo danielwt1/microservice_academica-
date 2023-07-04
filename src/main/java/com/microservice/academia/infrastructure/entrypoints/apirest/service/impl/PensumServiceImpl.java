@@ -2,7 +2,7 @@ package com.microservice.academia.infrastructure.entrypoints.apirest.service.imp
 
 import com.microservice.academia.domain.model.model.academy.Pensum;
 import com.microservice.academia.domain.model.ports.repositories.PensumPersistencePort;
-import com.microservice.academia.infrastructure.entrypoints.apirest.dto.PensumRequestDto;
+import com.microservice.academia.infrastructure.entrypoints.apirest.dto.request.PensumRequestDto;
 import com.microservice.academia.infrastructure.entrypoints.apirest.mapper.PensumRequestMapper;
 import com.microservice.academia.infrastructure.entrypoints.apirest.service.PensumService;
 import lombok.RequiredArgsConstructor;

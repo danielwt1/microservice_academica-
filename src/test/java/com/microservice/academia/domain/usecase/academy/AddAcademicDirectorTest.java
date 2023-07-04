@@ -1,6 +1,6 @@
 package com.microservice.academia.domain.usecase.academy;
 
-import com.microservice.academia.domain.exeptions.AcademiaExceptions;
+import com.microservice.academia.domain.exeptions.UserNotFoundException;
 import com.microservice.academia.domain.model.model.academy.AcademicProgram;
 import com.microservice.academia.domain.model.model.userservice.UserModel;
 import com.microservice.academia.domain.model.ports.repositories.AcademyPersistencePort;
@@ -74,7 +74,7 @@ class AddAcademicDirectorTest {
         when(getUserModelUseCase.action((userId))).thenReturn(userModel);
 
         // Act
-        AcademiaExceptions exception = assertThrows(AcademiaExceptions.class,
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class,
                 () -> addAcademicDirector.action(academicProgramId, userId));
 
         //Assert
